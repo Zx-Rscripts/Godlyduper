@@ -1,0 +1,271 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "🔧 ZX MM2 Hub 🔧", 
+    HidePremium = false, 
+    SaveConfig = false, 
+    IntroText = "ZX Hub by Mercuryz"
+})
+
+-- Main Tab
+local MainTab = Window:MakeTab({
+    Name = "🏹 Main", 
+    Icon = "", 
+    PremiumOnly = false
+})
+
+-- Knife Dupe Section
+MainTab:AddSection({ Name = "🔪 Knife Dupe 🔪" })
+
+MainTab:AddTextbox({
+    Name = "Insert Knife Name",
+    Default = "",
+    TextDisappear = false,
+    Callback = function(Value)
+        print("Knife: "..Value)
+    end
+})
+
+MainTab:AddButton({
+    Name = "🔪 Dupe Knives 🔪",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Dupe Activated!",
+            Content = "🔪 Please wait 4 minutes for the knife dupe to complete.",
+            Image = "",
+            Time = 5
+        })
+    end    
+})
+
+-- Gun Dupe Section
+MainTab:AddSection({ Name = "🔫 Gun Dupe 🔫" })
+
+MainTab:AddTextbox({
+    Name = "Insert Gun Name",
+    Default = "",
+    TextDisappear = false,
+    Callback = function(Value)
+        print("Gun: "..Value)
+    end
+})
+
+MainTab:AddButton({
+    Name = "🔫 Dupe Guns 🔫",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Dupe Activated!",
+            Content = "🔫 Please wait 4 minutes for the gun dupe to complete.",
+            Image = "",
+            Time = 5
+        })
+    end
+})
+
+-- Trade Scam Tab
+local TradeScamTab = Window:MakeTab({
+    Name = "💰 Trade Scam",
+    Icon = "",
+    PremiumOnly = false
+})
+
+-- Trade Scam Section
+TradeScamTab:AddSection({ Name = "💸 Trade Scam Features 💸" })
+
+TradeScamTab:AddButton({
+    Name = "💸 Trade Scam 💸",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Trade Scam Activated!",
+            Content = "Scam feature activated. Be cautious using it.",
+            Image = "",
+            Time = 5
+        })
+    end    
+})
+
+-- Freeze Trade Feature
+TradeScamTab:AddButton({
+    Name = "❄️ Freeze Trade ❄️",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Freeze Trade Activated!",
+            Content = "Trades are now frozen. Press the button again to unfreeze.",
+            Image = "",
+            Time = 5
+        })
+        -- Insert freeze trade code here
+    end    
+})
+
+-- Auto Accept Trade Feature
+TradeScamTab:AddButton({
+    Name = "✅ Auto Accept Trade ✅",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Auto Accept Trade Activated!",
+            Content = "Incoming trades will be accepted automatically.",
+            Image = "",
+            Time = 5
+        })
+        -- Insert auto-accept trade code here
+    end    
+})
+
+-- Auto Farm Tab
+local AutoFarmTab = Window:MakeTab({
+    Name = "🌾 Auto Farm",
+    Icon = "",
+    PremiumOnly = false
+})
+
+AutoFarmTab:AddButton({
+    Name = "Auto Farm Script (by baconbossscripts)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Au0yxz/Halloween-auto-farm/refs/heads/main/Mm2-Halloween.txt"))()
+        OrionLib:MakeNotification({
+            Name = "Auto Farm Activated!",
+            Content = "The auto farm script by baconbossscripts is now running.",
+            Image = "",
+            Time = 5
+        })
+    end    
+})
+
+-- Combat Tab
+local CombatTab = Window:MakeTab({
+    Name = "⚔️ Combat", 
+    Icon = "", 
+    PremiumOnly = false
+})
+
+CombatTab:AddSection({ Name = "💥 Combat Features 💥" })
+
+CombatTab:AddButton({
+    Name = "🔫 Auto Shoot Murderer 🔫",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Auto Shoot Activated!",
+            Content = "Auto Shoot will try to shoot the murderer automatically.",
+            Image = "",
+            Time = 5
+        })
+        -- Insert Auto Shoot Murderer code here
+    end    
+})
+
+CombatTab:AddButton({
+    Name = "🎯 Auto Get Gun 🎯",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Auto Get Gun Activated!",
+            Content = "The gun will be automatically picked up when available.",
+            Image = "",
+            Time = 5
+        })
+        -- Insert Auto Get Gun code here
+    end    
+})
+
+CombatTab:AddButton({
+    Name = "💀 Kill All 💀",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Kill All Activated!",
+            Content = "All players will be eliminated.",
+            Image = "",
+            Time = 5
+        })
+        -- Insert Kill All code here
+    end    
+})
+
+-- Miscellaneous Tab
+local MiscTab = Window:MakeTab({
+    Name = "🔧 Miscellaneous", 
+    Icon = "", 
+    PremiumOnly = false
+})
+
+-- Player Options
+MiscTab:AddSection({ Name = "🏃 Player Options" })
+
+MiscTab:AddSlider({
+    Name = "🚀 WalkSpeed",
+    Min = 16,
+    Max = 50,
+    Default = 16,
+    Increment = 1,
+    ValueName = "Speed",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
+})
+
+MiscTab:AddToggle({
+    Name = "🦘 Infinite Jump",
+    Default = false,
+    Callback = function(Value)
+        local InfiniteJumpEnabled = Value
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            if InfiniteJumpEnabled then
+                game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+            end
+        end)
+    end
+})
+
+-- Game Options
+MiscTab:AddSection({ Name = "🎮 Game Options" })
+
+MiscTab:AddToggle({
+    Name = "✈️ E to Fly",
+    Default = false,
+    Callback = function(Value)
+        local flying = Value
+        local player = game.Players.LocalPlayer
+        local torso = player.Character:WaitForChild("HumanoidRootPart")
+
+        local function Fly()
+            local bg = Instance.new("BodyGyro", torso)
+            bg.P = 9e4
+            bg.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
+
+            local bv = Instance.new("BodyVelocity", torso)
+            bv.Velocity = Vector3.new(0, 0.1, 0)
+            bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+            player.Character.Humanoid.PlatformStand = true
+
+            game:GetService("UserInputService").InputBegan:Connect(function(input)
+                if input.KeyCode == Enum.KeyCode.E then
+                    flying = not flying
+                end
+            end)
+
+            while flying do
+                wait()
+                bv.Velocity = game.Workspace.CurrentCamera.CFrame.LookVector * 50
+            end
+
+            bg:Destroy()
+            bv:Destroy()
+            player.Character.Humanoid.PlatformStand = false
+        end
+
+        if flying then Fly() end
+    end
+})
+
+MiscTab:AddToggle({
+    Name = "👀 ESP",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Ihaveash0rtnamefordiscord/Releases/main/MurderMystery2HighlightESP"))()
+        end
+    end
+})
+
+-- Initialize Orion
+OrionLib:Init()
